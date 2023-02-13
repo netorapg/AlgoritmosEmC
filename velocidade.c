@@ -18,25 +18,23 @@ int main(){
 
 //Condições
 
-	if ( vel_motorista == vel_permitida +1 || vel_motorista == vel_permitida +2 || vel_motorista == vel_permitida +3 || vel_motorista == vel_permitida +4 
-	|| vel_motorista ==vel_permitida +5 || vel_motorista == vel_permitida +6 || vel_motorista == vel_permitida +7 || vel_motorista == vel_permitida +8 
-	|| vel_motorista == vel_permitida +9 || vel_motorista == vel_permitida +10) {
+  if (vel_motorista == vel_permitida +10) {
 
-		printf("\nO motorista será multado em R$50.00\n\n");
+    printf("\nO motorista será multado em R$50.00\n\n");
+    
+    }
+    else if (vel_motorista >= vel_permitida + 11 && vel_motorista <= vel_permitida + 30){
+        printf("O motorista foi multado em R$ 100.00\n\n");
 
-				}
-				else if (vel_motorista >= vel_permitida + 11 && vel_motorista <= vel_permitida + 30){
-					printf("O motorista será multado em R$100,00 \n\n");
+    }
+    else if (vel_motorista >= vel_permitida + 31 ) {
+        printf("O motorista foi multado em R$200.00\n\n");
+    }
+    else if (vel_motorista <= vel_permitida){
+        printf("Velocidade Ok\n\n");
+    }
 
-			}
-			else if (vel_motorista >= vel_permitida + 31){
-				printf("O motorista foi multado em R$200.00\n\n");
+    return 0;
 
-		}
-		else if (vel_motorista <= vel_permitida){
-			printf("Velocidade Ok\n\n");
-		}
-
-	return 0;
 
 }
