@@ -26,4 +26,4 @@ int main(){
 	printf("%0.1f horas %0.1f minutos %0.1f segundos", horas, min, seg);
 }
 
-//Verificar
+
