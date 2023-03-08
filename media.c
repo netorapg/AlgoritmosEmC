@@ -24,6 +24,6 @@ int main(){
 	media = plus / 3;
 
 //Entrega o resultado	
-	printf("a média é: %d ", media);
+	printf("A média: %d ", media);
 
 }
