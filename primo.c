@@ -5,7 +5,7 @@ int main(){
 //Variáveis
 	int num, i, result = 0;
 
-	printf("\nPor favor, insira um número inteiro maior que zero: ");
+	printf("\n insira um número inteiro maior que zero: ");
 	scanf("%d", &num);
 
 	for (i = 2; i <= num / 2; i++){
