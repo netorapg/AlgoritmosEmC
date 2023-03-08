@@ -8,10 +8,10 @@ int main()
     int b, h, A;
     
 //Entrada de Dados    
-    printf("\nInforme o valor da base: ");
+    printf("\nInformar o valor da base: ");
     scanf("%d", &b);
     
-    printf("\nInforme o valor da altura: ");
+    printf("\nInformar o valor da altura: ");
     scanf("%d", &h);
 
 //Fórmula
