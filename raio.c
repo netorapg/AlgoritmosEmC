@@ -8,7 +8,7 @@ int main(){
 	float A, r, pi = 3.14;
 
 //Coleta de Dados	
-	printf("Insira o valor do raio: ");
+	printf("Insira o valor do raio:\n ");
 	scanf("%f", &r);
 
 //Aplicação da fórmula	
