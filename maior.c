@@ -7,7 +7,7 @@ int main(){
 	int n1, n2;
 
 //Receber os números
-	printf("Digite dois números:\n");
+	printf("Insira dois números:\n");
 	scanf("%d %d", &n1, &n2);
 
 //Condições
