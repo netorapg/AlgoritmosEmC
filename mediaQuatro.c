@@ -28,13 +28,13 @@ int main(){
 
 //condições
 if (media == 6){
-	printf("Aprovado\n");
+	printf("O Aluno foi Aprovado\n");
 	}
 if (media >= 4 && media < 6){
-	printf(" Exame\n");
+	printf("O Aluno está em Exame\n");
 	}
 if (media < 4){
-	printf("Reprovado\n");
+	printf("O Aluno foi Reprovado\n");
 	}
 
 }
