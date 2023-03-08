@@ -7,7 +7,7 @@ int main(void){
 	float dolar, real, cota;
 
 //Receber valor
-	printf("Por favor, queira insirar a quantidade em dólar a ser convertida:\n");
+	printf("Insira a quantidade em dólar a ser convertida:\n");
 	scanf("%f", &dolar);
 
 //Cálculo
