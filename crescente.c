@@ -8,7 +8,7 @@ int main(){
 	int n1, n2, n3;
 
 //Recebe os dados
-	printf("Digite 3 números:\n");
+	printf("Digite 3 (três) números:\n");
 	scanf("%d %d %d", &n1, &n2, &n3);
 
 //Condições
