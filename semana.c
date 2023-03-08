@@ -10,7 +10,7 @@ int main(){
 	int dom = 1, seg = 2, ter = 3, qua = 4, qui = 5, sex = 6, sab = 7, x;
 
 //Receber o valor
-	printf("\nPor favor, insira um número de 1 a 7: ");
+	printf("\ninsira um número de 1 a 7: ");
 	scanf("%d", &x);
 
 //Condições
