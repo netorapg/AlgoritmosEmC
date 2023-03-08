@@ -8,7 +8,7 @@ int main(){
 	int num;
 
 //Recebe o número
-	printf("Digite um número: ");
+	printf("Insira um número: ");
 	scanf("%i", &num);
 
 //Condições
