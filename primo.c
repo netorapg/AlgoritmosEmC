@@ -15,7 +15,7 @@ int main(){
 		}
 	}
 	if (result == 0)
-		printf("%d é primo\n", num);
+		printf("%d é um número primo\n", num);
 	else
 		printf("%d não é um número primo\n", num);
 
