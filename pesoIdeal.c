@@ -11,10 +11,10 @@ int main(){
 
 	float altura, peso_ideal;
 
-	printf("Por favor, diga se você é homem ou mulher(h ou m):\n");
+	printf("diga se você é homem ou mulher(h ou m):\n");
 	scanf("%s", &sex);
 
-	printf("Por favor, diga a sua altura(adicione ponto flutuante):\n");
+	printf("diga a sua altura(adicione ponto flutuante):\n");
 	scanf("%f", &altura);
 
 		if (sex == 'h'){
