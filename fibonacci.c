@@ -8,7 +8,7 @@
 	int a = 0, b = 1, auxiliar, i, n = 20;
 
 //Mensagem no terminal e primeiro número
-	printf("Série de Fibonacci:\n");
+	printf("A série de Fibonacci:\n");
 	printf("%d\n", b);
 
 //Laço com Variável de Controle
