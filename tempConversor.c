@@ -16,6 +16,6 @@ int main(){
 	C = (F - 32) / 1.8;
 
 //Resultado
-	printf("o valor de %f° Fahrenheit covertido para Celsius é de: %f°\n", F, C);
+	printf("o valor de %f° Fahrenheit convertido para Celsius é de: %f°\n", F, C);
 
 }
