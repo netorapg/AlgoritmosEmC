@@ -7,10 +7,10 @@ int main(){
     int num1, num2, plus;
     
 //Recebe os valores 
-    printf("Digite o primeiro número: ");
+    printf("primeiro número: ");
     scanf("%d", &num1);
 
-    printf("Digite o segundo número: ");
+    printf("segundo número: ");
     scanf("%d", &num2);
     
 //faz a soma dos valores
