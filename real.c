@@ -8,7 +8,7 @@ int main(){
 //variáveis
 	float real;
 //Recebe o número
-	printf("Digite um número real:\n");
+	printf("Insira um número real:\n");
 	scanf("%f", &real);
 //Faz o cálculo e entrega o resultado
 	printf("A parte inteira deste número é: %d\n", (int)real);
