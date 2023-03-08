@@ -6,13 +6,13 @@ int main(){
 
 //Receber valores
 
-	printf("por favor, insira a quantidade de anos:\n");
+	printf("insira a quantidade de anos:\n");
 	scanf("%d", &ano);
 
-	printf("Por favor, insira a quantidade de meses:\n");
+	printf("insira a quantidade de meses:\n");
 	scanf("%d", &mes);
 
-	printf("Por favor, insira a quantidade de dias:\n");
+	printf("insira a quantidade de dias:\n");
 	scanf("%d", &dia);
 
 //Conversões
