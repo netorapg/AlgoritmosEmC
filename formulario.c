@@ -7,7 +7,7 @@ int main (){
 //Coleta de Dados
     char nome[100], endereco[100], tele[100];
     
-    printf("Por favor, insira seu nome: ");
+    printf("Insira seu nome: ");
     gets(nome); 
     
     printf("Agora, o endereço: ");
