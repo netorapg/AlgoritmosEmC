@@ -6,15 +6,15 @@ int main(){
 //Varáveis
 	float valor, valor_total, refeicao, bebida, sobremesa, gorjeta;
 
-	printf("\nPor favor, insira o valor da refeição(adicione o ponto flutuante):\n ");
+	printf("\ninsira o valor da refeição(adicione o ponto flutuante):\n ");
 	scanf("%f", &refeicao);
 	printf("\nrefeição: R$%0.2f\n", refeicao);
 
-	printf("\nPor favor, insira o valor da bebida:\n ");
+	printf("\ninsira o valor da bebida:\n ");
 	scanf("%f", &bebida);
 	printf("\nbebida(s):R$%0.2f\n", bebida);
 
-	printf("\nPor favor, insira o valor da sobremesa:\n ");
+	printf("\ninsira o valor da sobremesa:\n ");
 	scanf("%f", &sobremesa);
 	printf("\nsobremesa: R$%0.2f\n", sobremesa);
 
