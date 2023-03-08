@@ -16,7 +16,7 @@ int main(){
 	printf("\nPrograma Fatorial\n");
 
 //Coleta de dados
-	printf("\nPor favor, insira um número para calcular sua fatorial: "); 
+	printf("\nInsira um número para calcular sua fatorial: "); 
 	scanf("%d", &N);
 
 //Looping do tipo While
