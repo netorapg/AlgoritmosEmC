@@ -11,10 +11,10 @@ int main(){
 	futuro = 2050;
 
 //Receber os dados
-	printf("Digite o seu ano de nascimento:\n");
+	printf("Ano de nascimento:\n");
 	scanf("%d", &nascimento);
 
-	printf("Digite o ano atual:\n");
+	printf("Ano atual:\n");
 	scanf("%d", &atual);
 
 //Cálculos
