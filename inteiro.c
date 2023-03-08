@@ -13,10 +13,10 @@ int n, q, c;
 
 //Cálculos
 	q = n * n;
-	printf("%d ao quadrado é: %d\n", n, q);//Resultado
+	printf("%d ao quadrado: %d\n", n, q);//Resultado
 
 	c = n * n * n;
-	printf("%d ao cubo é: %d\n",n, c);//Resultado
+	printf("%d ao cubo: %d\n",n, c);//Resultado
 
 
 }
