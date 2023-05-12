@@ -1,6 +1,5 @@
-//Faça um programa que receba valores para duas variáveis e some o valor das duas
-//variáveis. Utilize uma função
-
+//Criar um algoritmo que leia dois números e imprima o maior número, usando uma
+//função.
 #include <stdio.h>
 
 int maior() {
@@ -10,9 +9,9 @@ int maior() {
     printf("Insira o segundo numero:");
     scanf("%d", &n2);
     if(n1 > n2) {
-        return printf("Ordem Crescente: %d %d\n", n2, n1);
+        return printf("O maior número é: %d\n", n1);
     }else {
-        return printf("Ordem Crescente: %d %d\n", n1, n2);
+        return printf("O maior número é: %d\n", n2);
     }
 }
 
