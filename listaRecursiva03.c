@@ -1,3 +1,5 @@
+/*Crie uma função recursiva que receba a razão de uma progressão geométrica e a
+posição a ser descoberta*/
 #include <stdio.h>
 
 int progressaoGeometrica(int razao, int posicao){
