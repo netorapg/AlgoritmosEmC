@@ -16,7 +16,7 @@ int main(){
     scanf("%d", &numero);
 
     int resultado = somatoria(numero);
-    printf("A soma dos dígitos de %d é %d \n", numero, resultado);
+    printf("A soma dos numeros até %d é %d \n", numero, resultado);
 
     return 0;
 }
