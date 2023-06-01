@@ -51,8 +51,8 @@ int main () {
 
 #include <stdio.h>
 
-int x = 10;
-int y = 20;
+int x;
+int y;
 
 void calcula () {
     int mult = x * y;
@@ -62,6 +62,10 @@ void calcula () {
 }
 
 int main () {
+    printf("Digite o valor de x: ");
+    scanf("%d", &x);
+    printf("Digite o valor de y: ");
+    scanf("%d", &y);
    calcula ();
    return 0;
 }
