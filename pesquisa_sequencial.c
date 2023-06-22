@@ -43,7 +43,7 @@ int main()
 
    printf("ncad: %d\n", n_cad);
 
-   int posicao = busca_seq("Gertrudes", n_cad, cadastro);
+   int posicao = busca_seq("Veruka", n_cad, cadastro);
    if (posicao != -1) {
       printf("Nome encontrado na posição %d\n", posicao);
    } else {
