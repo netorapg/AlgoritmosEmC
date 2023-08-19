@@ -38,6 +38,14 @@ int compara (const void *a, const void *b) {
     return *(int *)a - *(int *)b;
 }
 
+double alunoMedia (const Estudante* aluno) {
+    double soma = 0;
+    for (int i = 0; i < 5; i++) {
+        soma += aluno->notas[i];
+    }
+    return soma / 5;
+}
+
 int main () {
     FILE *arquivo = fopen ("arquivo.txt", "r");
     Estudante estudantes [100];
@@ -61,7 +69,7 @@ int main () {
             for (int i = 0; i < 100; i++) {
                 if (estudantes[i].ano == ano) {
                     notas[n++] = estudantes[i].notas[disciplina];
-                n++;
+               
                 }
             }
 
@@ -73,5 +81,43 @@ int main () {
         printf("\n");
     }
 
+    printf ("Estatísticas por Disciplina (todos os anos): \n");
+    for (int disciplina = 0; disciplina < 5; disciplina++) {
+        int notas [100];
+        int n = 0;
+
+        for (int i = 0; i < 100; i++) {
+            notas[n++] = estudantes[i].notas[disciplina];
+        }
+
+        qsort(notas, n, sizeof(int), compara);
+        printf("Disciplina %d - Média: %.2f, Mediana: %.2f, Desvio Padrão: %.2f\n",
+               disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
+    }
+    printf ("\n");
+
+    Estudante *melhorAluno = NULL;
+    Estudante *piorAluno = NULL;
+    double melhorMedia = -1.0;
+    double piorMedia = 100.0;
+
+    for (int i = 0; i < 100; i++) {
+        double mediaAtual = alunoMedia(&estudantes[i]);
+        if (mediaAtual > melhorMedia) {
+            melhorMedia = mediaAtual;
+            melhorAluno = &estudantes[i];
+        }
+        if (mediaAtual < piorMedia) {
+            piorMedia = mediaAtual;
+            piorAluno = &estudantes[i];
+        }
+    }
+
+    if (melhorAluno) {
+        printf("Melhor aluno: %d - Média: %.2f\n", melhorAluno->id, melhorMedia);
+    }
+    if (piorAluno) {
+        printf("Pior aluno: %d - Média: %.2f\n", piorAluno->id, piorMedia);
+    }
     return 0;
 }
