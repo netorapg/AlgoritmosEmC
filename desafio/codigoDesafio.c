@@ -208,8 +208,6 @@ int main () {
     fimTotal = clock();
     tempoGastoTotal = ((double)(fimTotal - inicioTotal)) / CLOCKS_PER_SEC;
     printf("Tempo gasto: %.5f segundos\n", tempoGastoTotal);
-
-
-
+    
     return 0;
 }
