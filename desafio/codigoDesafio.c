@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-
+// Estruct para armazenar os dados de um estudante
 typedef struct {
     int id;
     int notas[5];
     int ano;
 } Estudante;
-
+// Inicio das Funções
 double media (int *valores, int tamanho) {
     double soma = 0;
     for (int i = 0; i < tamanho; i++) {
@@ -46,6 +46,12 @@ double alunoMedia (const Estudante* aluno) {
     return soma / 5;
 }
 
+int comparaEstudante (const void *a, const void *b) {
+    Estudante *estudanteA = (Estudante *)a;
+    Estudante *estudanteB = (Estudante *)b;
+    return estudanteA->ano - estudanteB->ano;
+}
+// Fim das Funções
 int main () {
     FILE *arquivo = fopen ("arquivo.txt", "r");
     Estudante estudantes [100];
@@ -59,6 +65,24 @@ int main () {
     }
 
     fclose (arquivo);
+    
+    qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
+
+    FILE *novoArquivo = fopen ("notas.txt", "w");
+    if (!novoArquivo) {
+        printf ("Erro ao abrir o arquivo\n");
+        return 1;
+    }
+
+    for (int i = 0; i < 100; i++) {
+        fprintf (novoArquivo, "%d;%d;%d;%d;%d;%d;%d;\n",
+        estudantes[i].id,
+        estudantes[i].notas[0], estudantes[i].notas[1],
+        estudantes[i].notas[2], estudantes[i].notas[3],
+        estudantes[i].notas[4], estudantes[i].ano);
+    }
+
+    fclose (novoArquivo);
 
     for (int ano = 2020; ano <= 2023; ano++) {
         printf("Ano: %d\n", ano);
@@ -138,5 +162,9 @@ int main () {
     if (piorAluno) {
         printf("Pior aluno: %d - Média: %.2f\n", piorAluno->id, piorMedia);
     }
+
+
+
+
     return 0;
 }
