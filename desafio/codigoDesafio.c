@@ -95,6 +95,25 @@ int main () {
                disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
     }
     printf ("\n");
+    
+    int aprovados [5] = {0};
+    int reprovados [5] = {0};
+
+    for (int i = 0; i < 100; i++){
+        for (int j = 0; j < 5; j++) {
+            if (estudantes[i].notas[j] >= 70) {
+                aprovados[j]++;
+            } else {
+                reprovados[j]++;
+            }
+        }
+    }
+    printf ("Resultados:\n");
+    printf("Total de alunos: 100\n");
+    for (int j = 0; j < 5; j++) {
+        printf("Disciplina %d - Aprovados: %d, Reprovados: %d\n", j+1, aprovados[j], reprovados[j]);
+    }
+    printf("\n");
 
     Estudante *melhorAluno = NULL;
     Estudante *piorAluno = NULL;
