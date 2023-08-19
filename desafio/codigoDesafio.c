@@ -10,7 +10,7 @@ typedef struct {
     int ano;
 } Estudante;
 // Inicio das Funções
-// Função para calcular a média de um vetor de inteiros
+// Função para calcular a média
 double media (int *valores, int tamanho) {
     double soma = 0;
     for (int i = 0; i < tamanho; i++) {
@@ -18,7 +18,7 @@ double media (int *valores, int tamanho) {
     }
     return soma / tamanho;
 }
-// Função para calcular a mediana de um vetor de inteiros
+// Função para calcular a mediana
 double mediana (int *valores, int tamanho) {
     if (tamanho % 2 == 0) {
         return (valores[tamanho / 2] + valores[tamanho / 2 - 1]) / 2.0;
@@ -26,7 +26,7 @@ double mediana (int *valores, int tamanho) {
         return valores [tamanho / 2];
     }
 }
-// Função para calcular o desvio padrão de um vetor de inteiros
+// Função para calcular o desvio padrão
 double desvioPadrao (int *valores, int tamanho) {
     double m = media (valores, tamanho);
     double soma = 0.0;
