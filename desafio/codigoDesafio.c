@@ -54,9 +54,13 @@ int comparaEstudante (const void *a, const void *b) {
 }
 // Fim das Funções
 int main () {
-    clock_t inicio, fim;
-    double tempoGasto;
-    inicio = clock();
+    clock_t inicioTotal, fimTotal;
+    double tempoGastoTotal;
+    inicioTotal = clock();
+
+    clock_t inicioLeitura, fimLeitura;
+    inicioLeitura = clock();
+
     FILE *arquivo = fopen ("arquivo.txt", "r");
     Estudante estudantes [100];
 
@@ -69,9 +73,20 @@ int main () {
     }
 
     fclose (arquivo);
+    fimLeitura = clock();
+    tempoGastoTotal = (double)(fimLeitura - inicioLeitura) / CLOCKS_PER_SEC;
+    printf ("Tempo gasto na leitura: %5f segundos\n", tempoGastoTotal);
 
+    clock_t inicioOrdenacao, fimOrdenacao;
+    inicioOrdenacao = clock();
     qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
+    fimOrdenacao = clock();
+    tempoGastoTotal = (double)(fimOrdenacao - inicioOrdenacao) / CLOCKS_PER_SEC;
+    printf ("Tempo gasto na ordenação: %5f segundos\n", tempoGastoTotal);
 
+    clock_t inicioEscrita, fimEscrita;
+    double tempoGastoEscrita;
+    inicioEscrita = clock();
     FILE *novoArquivo = fopen ("notas.txt", "w");
     if (!novoArquivo) {
         printf ("Erro ao abrir o arquivo\n");
@@ -87,7 +102,11 @@ int main () {
     }
 
     fclose (novoArquivo);
-
+    fimEscrita = clock();
+    tempoGastoEscrita = (double)(fimEscrita - inicioEscrita) / CLOCKS_PER_SEC;
+    printf ("Tempo gasto na escrita: %5f segundos\n", tempoGastoEscrita);
+    printf("\n");
+    
     for (int ano = 2020; ano <= 2023; ano++) {
         printf("Ano: %d\n", ano);
         for (int disciplina = 0; disciplina < 5; disciplina++) {
@@ -167,9 +186,9 @@ int main () {
         printf("Pior aluno: %d - Média: %.2f\n", piorAluno->id, piorMedia);
     }
 
-    fim = clock();
-    tempoGasto = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
-    printf("Tempo gasto: %.5f segundos\n", tempoGasto);
+    fimTotal = clock();
+    tempoGastoTotal = ((double)(fimTotal - inicioTotal)) / CLOCKS_PER_SEC;
+    printf("Tempo gasto: %.5f segundos\n", tempoGastoTotal);
 
 
 
