@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 // Estruct para armazenar os dados de um estudante
 typedef struct {
@@ -53,6 +54,9 @@ int comparaEstudante (const void *a, const void *b) {
 }
 // Fim das Funções
 int main () {
+    clock_t inicio, fim;
+    double tempoGasto;
+    inicio = clock();
     FILE *arquivo = fopen ("arquivo.txt", "r");
     Estudante estudantes [100];
 
@@ -65,7 +69,7 @@ int main () {
     }
 
     fclose (arquivo);
-    
+
     qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
 
     FILE *novoArquivo = fopen ("notas.txt", "w");
@@ -163,6 +167,9 @@ int main () {
         printf("Pior aluno: %d - Média: %.2f\n", piorAluno->id, piorMedia);
     }
 
+    fim = clock();
+    tempoGasto = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
+    printf("Tempo gasto: %.5f segundos\n", tempoGasto);
 
 
 
