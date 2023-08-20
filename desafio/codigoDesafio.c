@@ -62,8 +62,6 @@ void ordenarPorAnoInsertion(Estudante *estudantes, int n) {
         Estudante chave = estudantes[i];
         int j = i - 1;
 
-        // Mova os elementos de estudantes[0..i-1] que são maiores que a chave
-        // para uma posição à frente de sua posição atual
         while (j >= 0 && estudantes[j].ano > chave.ano) {
             estudantes[j + 1] = estudantes[j];
             j = j - 1;
@@ -308,13 +306,14 @@ int main () {
     imprimirResultados(estudantes);
     fimResultado = clock();
     tempoGastoTotal = (double)(fimResultado - inicioResultado) / CLOCKS_PER_SEC;
+    printf ("Tempo gasto na coleta e impressão dos resultados: %5f segundos\n", tempoGastoTotal);
 
     clock_t inicioMelhorPior, fimMelhorPior;
     inicioMelhorPior = clock();
     imprimirMelhorEPiorAluno(estudantes);
     fimMelhorPior = clock();
     tempoGastoTotal = (double)(fimMelhorPior - inicioMelhorPior) / CLOCKS_PER_SEC;
-    printf ("Tempo gasto na coleta e impressão dos resultados: %5f segundos\n", tempoGastoTotal);
+    printf ("Tempo gasto na coleta e impressão do melhor e pior aluno: %5f segundos\n", tempoGastoTotal);
     printf("\n");
     /*   // Impressão dos resultados de aprovados e reprovados por disciplina
     int aprovados [5] = {0};
