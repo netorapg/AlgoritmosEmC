@@ -53,6 +53,34 @@ int comparaEstudante (const void *a, const void *b) {
     Estudante *estudanteB = (Estudante *)b;
     return estudanteA->ano - estudanteB->ano;
 }
+
+void ordenarPorAnoInsertion(Estudante *estudantes, int n) {
+    for (int i = 1; i < n; i++) {
+        Estudante chave = estudantes[i];
+        int j = i - 1;
+
+        // Mova os elementos de estudantes[0..i-1] que são maiores que a chave
+        // para uma posição à frente de sua posição atual
+        while (j >= 0 && estudantes[j].ano > chave.ano) {
+            estudantes[j + 1] = estudantes[j];
+            j = j - 1;
+        }
+        estudantes[j + 1] = chave;
+    }
+}
+void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int chave = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > chave) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = chave;
+    }
+}
+
 // Fim das Funções
 int main () {
     // Inicio do cronometro principal
@@ -90,7 +118,8 @@ int main () {
     clock_t inicioOrdenacao, fimOrdenacao;
     inicioOrdenacao = clock();
     // Ordena os estudantes
-    qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
+    //qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
+    ordenarPorAnoInsertion(estudantes, 100);
     // Fim do cronometro de ordenação
     fimOrdenacao = clock();
     tempoGastoTotal = (double)(fimOrdenacao - inicioOrdenacao) / CLOCKS_PER_SEC;
@@ -137,8 +166,8 @@ int main () {
                 }
             }
 
-            qsort(notas, n, sizeof(int), compara);
-
+           // qsort(notas, n, sizeof(int), compara);
+             insertionSort(notas, n);
             printf("Disciplina %d - Média: %.2f, Mediana: %.2f, Desvio Padrão: %.2f\n",
                    disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
         }
@@ -154,7 +183,8 @@ int main () {
             notas[n++] = estudantes[i].notas[disciplina];
         }
 
-        qsort(notas, n, sizeof(int), compara);
+        //qsort(notas, n, sizeof(int), compara);
+        insertionSort(notas, n);
         printf("Disciplina %d - Média: %.2f, Mediana: %.2f, Desvio Padrão: %.2f\n",
                disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
     }
