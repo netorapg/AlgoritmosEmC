@@ -3,9 +3,6 @@
 #include <math.h>
 #include <time.h>
 
-#define NUM_ESTUDANTES 100
-
-
 // Estruct para armazenar os dados de um estudante
 typedef struct {
     int id;
@@ -84,48 +81,6 @@ void insertionSort(int arr[], int n) {
     }
 }
 
-
-
-int lerEstudantesDoArquivo(const char *nomeArquivo, Estudante estudantes[NUM_ESTUDANTES]) {
-    FILE *arquivo = fopen(nomeArquivo, "r");
-    if (!arquivo) {
-        printf("Erro ao abrir o arquivo\n");
-        return -1;
-    }
-
-    int i;
-    for (i = 0; i < NUM_ESTUDANTES && !feof(arquivo); i++) {
-        fscanf(arquivo, "%d; %d; %d; %d; %d; %d; %d;",
-               &estudantes[i].id,
-               &estudantes[i].notas[0], &estudantes[i].notas[1], 
-               &estudantes[i].notas[2], &estudantes[i].notas[3],
-               &estudantes[i].notas[4], &estudantes[i].ano);
-    }
-    
-    fclose(arquivo);
-    return i; // Retorna o número de estudantes lidos
-}
-
-int escreverEstudantesNoArquivo(const char *nomeArquivo, Estudante estudantes[NUM_ESTUDANTES]) {
-    FILE *novoArquivo = fopen(nomeArquivo, "w");
-    
-    if (!novoArquivo) {
-        printf("Erro ao abrir o arquivo\n");
-        return 0; // Retornar falso indicando falha
-    }
-
-    for (int i = 0; i < NUM_ESTUDANTES; i++) {
-        fprintf(novoArquivo, "%d;%d;%d;%d;%d;%d;%d;\n",
-               estudantes[i].id,
-               estudantes[i].notas[0], estudantes[i].notas[1],
-               estudantes[i].notas[2], estudantes[i].notas[3],
-               estudantes[i].notas[4], estudantes[i].ano);
-    }
-
-    fclose(novoArquivo);
-    return 1; // Retornar verdadeiro indicando sucesso
-}
-
 // Fim das Funções
 int main () {
     // Inicio do cronometro principal
@@ -137,12 +92,24 @@ int main () {
     clock_t inicioLeitura, fimLeitura;
     inicioLeitura = clock();
 
-    Estudante estudantes[NUM_ESTUDANTES];
-    int numEstudantesLidos = lerEstudantesDoArquivo("arquivo.txt", estudantes);
-    
-    if (numEstudantesLidos == -1) {
-        return 1; // Houve erro ao ler o arquivo
+    // Abre o arquivo para leitura
+    FILE *arquivo = fopen ("arquivo.txt", "r");
+    Estudante estudantes [100];
+    // Verifica se o arquivo foi aberto corretamente
+    if (!arquivo) {
+        printf ("Erro ao abrir o arquivo\n");
+        return 1;
     }
+    // Lê os dados do arquivo
+    for (int i = 0; i < 100 && !feof(arquivo); i++) {
+        fscanf(arquivo, "%d; %d; %d; %d; %d; %d; %d;",
+        &estudantes[i].id,
+        &estudantes[i].notas[0], &estudantes[i].notas[1], 
+        &estudantes[i].notas[2], &estudantes[i].notas[3],
+        &estudantes[i].notas[4], &estudantes[i].ano);
+    }
+    // Fecha o arquivo
+    fclose (arquivo);
     // Fim do cronometro de leitura
     fimLeitura = clock();
     tempoGastoTotal = (double)(fimLeitura - inicioLeitura) / CLOCKS_PER_SEC;
@@ -151,7 +118,8 @@ int main () {
     clock_t inicioOrdenacao, fimOrdenacao;
     inicioOrdenacao = clock();
     // Ordena os estudantes
-    ordenarPorAnoInsertion(estudantes, NUM_ESTUDANTES);
+    //qsort(estudantes, 100, sizeof(Estudante), comparaEstudante);
+    ordenarPorAnoInsertion(estudantes, 100);
     // Fim do cronometro de ordenação
     fimOrdenacao = clock();
     tempoGastoTotal = (double)(fimOrdenacao - inicioOrdenacao) / CLOCKS_PER_SEC;
@@ -160,10 +128,23 @@ int main () {
     clock_t inicioEscrita, fimEscrita;
     double tempoGastoEscrita;
     inicioEscrita = clock();
-
-    if (!escreverEstudantesNoArquivo("notas.txt", estudantes)) {
-        return 1; // Houve erro ao escrever no arquivo
+    // Abre o arquivo para escrita
+    FILE *novoArquivo = fopen ("notas.txt", "w");
+    // Verifica se o arquivo foi aberto corretamente
+    if (!novoArquivo) {
+        printf ("Erro ao abrir o arquivo\n");
+        return 1;
     }
+    // Escreve os dados no arquivo
+    for (int i = 0; i < 100; i++) {
+        fprintf (novoArquivo, "%d;%d;%d;%d;%d;%d;%d;\n",
+        estudantes[i].id,
+        estudantes[i].notas[0], estudantes[i].notas[1],
+        estudantes[i].notas[2], estudantes[i].notas[3],
+        estudantes[i].notas[4], estudantes[i].ano);
+    }
+    // Fecha o arquivo
+    fclose (novoArquivo);
     // Fim do cronometro de escrita
     fimEscrita = clock();
     tempoGastoEscrita = (double)(fimEscrita - inicioEscrita) / CLOCKS_PER_SEC;
