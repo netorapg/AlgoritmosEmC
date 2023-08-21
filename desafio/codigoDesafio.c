@@ -277,7 +277,7 @@ int main () {
     printf ("Tempo gasto na coleta e impressão dos resultados: %5f segundos\n", tempoGastoTotal);
 
     printf("\n");
-    
+
     clock_t inicioMelhorPior, fimMelhorPior;
     inicioMelhorPior = clock();
     imprimirMelhorEPiorAluno(estudantes);
