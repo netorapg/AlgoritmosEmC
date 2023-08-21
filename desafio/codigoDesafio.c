@@ -127,10 +127,10 @@ void imprimirEstatisticas(Estudante estudantes[NUM_ESTUDANTES]) {
     for (int ano = 2020; ano <= 2023; ano++) {
         printf("Ano: %d\n", ano);
         for (int disciplina = 0; disciplina < 5; disciplina++) {
-            int notas[100];
+            int notas[NUM_ESTUDANTES];
             int n = 0;
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < NUM_ESTUDANTES; i++) {
                 if (estudantes[i].ano == ano) {
                     notas[n++] = estudantes[i].notas[disciplina];
                 }
@@ -146,10 +146,10 @@ void imprimirEstatisticas(Estudante estudantes[NUM_ESTUDANTES]) {
     // Coleta e impressão da media, mediana e desvio padrão das disciplinas
     printf("Estatísticas por Disciplina (todos os anos):\n");
     for (int disciplina = 0; disciplina < 5; disciplina++) {
-        int notas[100];
+        int notas[NUM_ESTUDANTES];
         int n = 0;
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < NUM_ESTUDANTES; i++) {
             notas[n++] = estudantes[i].notas[disciplina];
         }
 
@@ -165,7 +165,7 @@ void imprimirResultados(Estudante estudantes[NUM_ESTUDANTES]) {
     int aprovados[5] = {0};
     int reprovados[5] = {0};
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < NUM_ESTUDANTES; i++) {
         for (int j = 0; j < 5; j++) {
             if (estudantes[i].notas[j] >= 70) {
                 aprovados[j]++;
@@ -188,9 +188,9 @@ void imprimirMelhorEPiorAluno(Estudante estudantes[NUM_ESTUDANTES]) {
     Estudante *melhorAluno = NULL;
     Estudante *piorAluno = NULL;
     double melhorMedia = -1.0;
-    double piorMedia = 100.0;
+    double piorMedia = NUM_ESTUDANTES;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < NUM_ESTUDANTES; i++) {
         double mediaAtual = alunoMedia(&estudantes[i]);
         if (mediaAtual > melhorMedia) {
             melhorMedia = mediaAtual;
