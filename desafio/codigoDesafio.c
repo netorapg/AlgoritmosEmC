@@ -176,7 +176,7 @@ void imprimirResultados(Estudante estudantes[NUM_ESTUDANTES]) {
     }
 
     printf("Resultados:\n");
-    printf("Total de alunos: 100\n");
+    printf("Total de alunos: %d\n", NUM_ESTUDANTES);
     for (int j = 0; j < 5; j++) {
         printf("Disciplina %d - Aprovados: %d, Reprovados: %d\n", j+1, aprovados[j], reprovados[j]);
     }
@@ -268,39 +268,7 @@ int main () {
     tempoGastoTotal = (double)(fimEstatisticas - inicioEstatisticas) / CLOCKS_PER_SEC;
     printf ("Tempo gasto na coleta e impressão das estatísticas: %5f segundos\n", tempoGastoTotal);
     printf("\n");
-    /*for (int ano = 2020; ano <= 2023; ano++) {
-        printf("Ano: %d\n", ano);
-        for (int disciplina = 0; disciplina < 5; disciplina++) {
-            int notas [100];
-            int n = 0;
-
-            for (int i = 0; i < 100; i++) {
-                if (estudantes[i].ano == ano) {
-                    notas[n++] = estudantes[i].notas[disciplina];
-               
-                }
-            }
-             insertionSort(notas, n);
-            printf("Disciplina %d - Média: %.2f, Mediana: %.2f, Desvio Padrão: %.2f\n",
-                   disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
-        }
-        printf("\n");
-    }
-    // Coleta e impressão da media, mediana e desvio padrão das disciplinas
-    printf ("Estatísticas por Disciplina (todos os anos): \n");
-    for (int disciplina = 0; disciplina < 5; disciplina++) {
-        int notas [100];
-        int n = 0;
-
-        for (int i = 0; i < 100; i++) {
-            notas[n++] = estudantes[i].notas[disciplina];
-        }
-
-        insertionSort(notas, n);
-        printf("Disciplina %d - Média: %.2f, Mediana: %.2f, Desvio Padrão: %.2f\n",
-               disciplina+1, media(notas, n), mediana(notas, n), desvioPadrao(notas, n));
-    }
-    printf ("\n");*/
+    
     clock_t inicioResultado, fimResultado;
     inicioResultado = clock();
     imprimirResultados(estudantes);
@@ -315,52 +283,7 @@ int main () {
     tempoGastoTotal = (double)(fimMelhorPior - inicioMelhorPior) / CLOCKS_PER_SEC;
     printf ("Tempo gasto na coleta e impressão do melhor e pior aluno: %5f segundos\n", tempoGastoTotal);
     printf("\n");
-    /*   // Impressão dos resultados de aprovados e reprovados por disciplina
-    int aprovados [5] = {0};
-    int reprovados [5] = {0};
-
-    for (int i = 0; i < 100; i++){
-        for (int j = 0; j < 5; j++) {
-            if (estudantes[i].notas[j] >= 70) {
-                aprovados[j]++;
-            } else {
-                reprovados[j]++;
-            }
-        }
-    }
-    printf ("Resultados:\n");
-    printf("Total de alunos: 100\n");
-    for (int j = 0; j < 5; j++) {
-        printf("Disciplina %d - Aprovados: %d, Reprovados: %d\n", j+1, aprovados[j], reprovados[j]);
-    }
-    printf("\n");*/
-
-    /*// Impressão do melhor e pior aluno
-    Estudante *melhorAluno = NULL;
-    Estudante *piorAluno = NULL;
-    double melhorMedia = -1.0;
-    double piorMedia = 100.0;
-
-    for (int i = 0; i < 100; i++) {
-        double mediaAtual = alunoMedia(&estudantes[i]);
-        if (mediaAtual > melhorMedia) {
-            melhorMedia = mediaAtual;
-            melhorAluno = &estudantes[i];
-        }
-        if (mediaAtual < piorMedia) {
-            piorMedia = mediaAtual;
-            piorAluno = &estudantes[i];
-        }
-    }
-
-    if (melhorAluno) {
-        printf("Melhor aluno: %d - Média: %.2f\n", melhorAluno->id, melhorMedia);
-    }
-    if (piorAluno) {
-        printf("Pior aluno: %d - Média: %.2f\n", piorAluno->id, piorMedia);
-    }
-*/
-    // Fim do cronometro total
+   
     fimTotal = clock();
     tempoGastoTotal = ((double)(fimTotal - inicioTotal)) / CLOCKS_PER_SEC;
     printf("Tempo gasto: %.5f segundos\n", tempoGastoTotal);
