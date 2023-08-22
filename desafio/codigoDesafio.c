@@ -233,8 +233,10 @@ int main () {
 
     clock_t inicioOrdenacao, fimOrdenacao;
     inicioOrdenacao = clock();
+
     // Ordena os estudantes
     ordenarPorAnoInsertion(estudantes, NUM_ESTUDANTES);
+
     // Fim do cronometro de ordenação
     fimOrdenacao = clock();
     tempoGastoTotal = (double)(fimOrdenacao - inicioOrdenacao) / CLOCKS_PER_SEC;
@@ -248,6 +250,7 @@ int main () {
     if (!escreverEstudantesNoArquivo("notas.txt", estudantes)) {
         return 1; // Houve erro ao escrever no arquivo
     }
+
     // Fim do cronometro de escrita
     fimEscrita = clock();
     tempoGastoEscrita = (double)(fimEscrita - inicioEscrita) / CLOCKS_PER_SEC;
@@ -258,7 +261,9 @@ int main () {
     //das disciplinas por ano
     clock_t inicioEstatisticas, fimEstatisticas;
     inicioEstatisticas = clock();
+
     imprimirEstatisticas(estudantes);
+
     fimEstatisticas = clock();
     tempoGastoTotal = (double)(fimEstatisticas - inicioEstatisticas) / CLOCKS_PER_SEC;
     printf ("Tempo gasto na coleta e impressão das estatísticas: %5f segundos\n", tempoGastoTotal);
@@ -266,7 +271,9 @@ int main () {
     
     clock_t inicioResultado, fimResultado;
     inicioResultado = clock();
+
     imprimirResultados(estudantes);
+
     fimResultado = clock();
     tempoGastoTotal = (double)(fimResultado - inicioResultado) / CLOCKS_PER_SEC;
     printf ("Tempo gasto na coleta e impressão dos resultados: %5f segundos\n", tempoGastoTotal);
@@ -275,7 +282,9 @@ int main () {
 
     clock_t inicioMelhorPior, fimMelhorPior;
     inicioMelhorPior = clock();
+
     imprimirMelhorEPiorAluno(estudantes);
+    
     fimMelhorPior = clock();
     tempoGastoTotal = (double)(fimMelhorPior - inicioMelhorPior) / CLOCKS_PER_SEC;
     printf ("Tempo gasto na coleta e impressão do melhor e pior aluno: %5f segundos\n", tempoGastoTotal);
