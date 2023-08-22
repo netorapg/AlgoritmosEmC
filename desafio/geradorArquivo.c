@@ -3,7 +3,7 @@
 #include <time.h>
 
 int main() {
-    FILE *fp = fopen("arquivo.txt", "w");
+    FILE *fp = fopen("arquivoMaior.txt", "w");
 
     if (fp == NULL) {
         printf("Não foi possível criar o arquivo.\n");
@@ -12,7 +12,7 @@ int main() {
 
     srand(time(NULL)); // Inicializa o gerador de números aleatórios
 
-    for (int i = 1; i <= 100; i++) {
+    for (int i = 1; i <= 1000; i++) {
         fprintf(fp, "%d;%d;%d;%d;%d;%d;%d\n", 
             i, 
             rand() % 101, // Gera um valor entre 0 e 100

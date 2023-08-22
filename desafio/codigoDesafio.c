@@ -4,7 +4,7 @@
 #include <time.h>
 
 // Definição do tamanho máximo de estudantes
-#define NUM_ESTUDANTES 100
+#define NUM_ESTUDANTES 1000
 
 // Struct para armazenar os dados de um estudante
 typedef struct {
