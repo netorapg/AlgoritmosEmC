@@ -6,7 +6,7 @@
 // Definição do tamanho máximo de estudantes
 #define NUM_ESTUDANTES 100
 
-// Estruct para armazenar os dados de um estudante
+// Struct para armazenar os dados de um estudante
 typedef struct {
     int id;
     int notas[5];
@@ -50,12 +50,7 @@ double alunoMedia (const Estudante* aluno) {
     }
     return soma / 5;
 }
-// Função para comparar os estudantes
-int comparaEstudante (const void *a, const void *b) {
-    Estudante *estudanteA = (Estudante *)a;
-    Estudante *estudanteB = (Estudante *)b;
-    return estudanteA->ano - estudanteB->ano;
-}
+
 
 void ordenarPorAnoInsertion(Estudante *estudantes, int n) {
     for (int i = 1; i < n; i++) {
