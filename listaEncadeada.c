@@ -7,15 +7,26 @@ typedef struct no {
 } No;
 
 
-
+//Criar um novo nó para reaproveita esta funcionalidade
+//nas demais funções
+criarNo(int valor){
+    No *novo = (No *) malloc(sizeof(No));
+    if(novo){
+        novo->valor = valor;
+        return novo;
+    } else {
+        printf("Erro ao alocar memoria!\n");
+    }
+    return NULL;
+}
 
 
 void adicionarInicio(No **lista, int valor){
 
-    No *novo = (No *) malloc(sizeof(No));
+    No *novo = criarNo(valor);
 
     if(novo){
-        novo->valor = valor;
+       // novo->valor = valor;
         novo->proximo = *lista;
         *lista = novo;
     }else{
@@ -24,9 +35,9 @@ void adicionarInicio(No **lista, int valor){
 }
 
 void adicionarMeio(No **lista, int valorReferencia, int valor) {
-    No *novo = (No *) malloc(sizeof(No));
+    No *novo = criarNo(valor);
     if(novo){
-        novo->valor = valor;
+       // novo->valor = valor;
         if(*lista==NULL){
             novo->proximo = NULL;
             *lista = novo;
@@ -42,10 +53,10 @@ void adicionarMeio(No **lista, int valorReferencia, int valor) {
 }
 
 void adicionarFim(No **lista, int valor){
-    No *novo = (No *)malloc(sizeof(No));
+    No *novo = criarNo(valor);
     if(novo){
         if(*lista==NULL){
-            novo->valor = valor;
+          //  novo->valor = valor;
             novo->proximo = NULL;
             *lista = novo;
             return;
