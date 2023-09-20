@@ -73,6 +73,30 @@ void adicionarFim(No **lista, int valor){
     }
 }
 
+void removerInicio(No **lista){
+    if(*lista){
+        No *aux = *lista;
+        *lista = aux->proximo;
+        free(aux);
+    }
+}
+
+void removerFim(No **lista){
+    if(*lista){
+        No *aux = *lista;
+        No *anterior = NULL;
+        while(aux->proximo){
+            anterior = aux;
+            aux = aux->proximo;
+        }
+        if(anterior){
+            anterior->proximo = NULL;
+        }else{
+            *lista = NULL;
+        }
+        free(aux);
+    }
+}
 
 void imprimirLista(No *aux){
     //No *aux = lista;
@@ -101,6 +125,10 @@ int main(){
     adicionarInicio(&lista, 100);
     imprimirLista(lista);
     adicionarMeio(&lista, 20, 21);
+    imprimirLista(lista);
+    removerInicio(&lista);
+    imprimirLista(lista);
+    removerFim(&lista);
     imprimirLista(lista);
 
     return 0;
