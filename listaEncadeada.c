@@ -81,6 +81,23 @@ void removerInicio(No **lista){
     }
 }
 
+void removerMeio(No **lista, int valor){
+    if(*lista){
+        No *aux = *lista;
+        No *anterior = NULL;
+        while(aux->proximo && aux->valor!=valor){
+            anterior = aux;
+            aux = aux->proximo;
+        } 
+        if(anterior){
+            anterior->proximo = aux->proximo;
+        }else{
+            *lista = aux->proximo;
+        }
+        free(aux);
+    }
+}
+
 void removerFim(No **lista){
     if(*lista){
         No *aux = *lista;
@@ -129,6 +146,8 @@ int main(){
     removerInicio(&lista);
     imprimirLista(lista);
     removerFim(&lista);
+    imprimirLista(lista);
+    removerMeio(&lista, 20);
     imprimirLista(lista);
 
     return 0;
