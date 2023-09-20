@@ -111,17 +111,17 @@ void imprimirLista(No *aux){
 
 int main(){
     No *lista = NULL;
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarInicio(&lista, 10);
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarInicio(&lista, 20);
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarInicio(&lista, 50);
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarFim(&lista, 5);
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarFim(&lista, 1);
-     imprimirLista(lista);
+    imprimirLista(lista);
     adicionarInicio(&lista, 100);
     imprimirLista(lista);
     adicionarMeio(&lista, 20, 21);
