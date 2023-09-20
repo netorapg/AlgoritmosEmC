@@ -143,12 +143,16 @@ int main(){
     imprimirLista(lista);
     adicionarMeio(&lista, 20, 21);
     imprimirLista(lista);
+    removerMeio(&lista, 10);
+    imprimirLista(lista);
+   
+   /*imprimirLista(lista);
     removerInicio(&lista);
     imprimirLista(lista);
     removerFim(&lista);
     imprimirLista(lista);
     removerMeio(&lista, 20);
-    imprimirLista(lista);
+    imprimirLista(lista);*/ 
 
     return 0;
 }

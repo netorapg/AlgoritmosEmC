@@ -74,3 +74,56 @@ void adicionarFim(No **lista, int valor) {
         }
     }
 }
+
+void remover(No **lista, int valor) {
+    if(*lista){
+        No *aux = *lista;
+        No *anterior = NULL;
+        while(aux->proximo && aux->valor!=valor){
+            anterior = aux;
+            aux = aux->proximo;
+        }
+        if(anterior){
+            anterior->proximo = aux->proximo;
+        } else {
+            *lista = aux->proximo;
+        }
+        free(aux);
+    }
+}
+
+void imprimirLista(No *aux){
+    printf("Lista: ");
+    while(aux){
+        printf("%d ", aux->valor);
+        aux = aux->proximo;
+    }
+    printf("\n");
+}
+
+
+int main(){
+
+    int op = 5;
+    int valor = 0;
+    No *lista = NULL;
+
+    switch(op){
+        case 1:
+            adicionarInicio(&lista, valor);
+            break;
+        case 2:
+            adicionarMeio(&lista, valor, valor);
+            break;
+        case 3:
+            adicionarFim(&lista, valor);
+            break;
+        case 4:
+            remover(&lista, valor);
+            break;
+        case 5:
+            imprimirLista(lista);
+            break;
+
+    }    
+}
