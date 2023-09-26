@@ -9,7 +9,7 @@ typedef struct no {
 
 //Criar um novo nó para reaproveita esta funcionalidade
 //nas demais funções
-criarNo(int valor){
+No* criarNo(int valor){
     No *novo = (No *) malloc(sizeof(No));
     if(novo){
         novo->valor = valor;

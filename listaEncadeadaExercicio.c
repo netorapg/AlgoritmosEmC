@@ -18,7 +18,7 @@ typedef struct no {
 } No;
 
 
-criarNo(int valor){
+No* criarNo(int valor){
     No *novo = (No *) malloc(sizeof(No));
     if(novo){
         novo->valor = valor;
@@ -116,9 +116,19 @@ void imprimirLista(No *aux){
 
 int menu(){
 
-    int op = 1;
+    int op = 0;
     int valor = 0;
     No *lista = NULL;
+
+    printf("1 - Adicionar no inicio\n");
+    printf("2 - Adicionar no meio\n");
+    printf("3 - Adicionar no fim\n");
+    printf("4 - Remover\n");
+    printf("5 - Imprimir\n");
+    printf("6 - Remover todos\n");
+    printf("0 - Sair\n");
+    printf("Digite a opcao: ");
+    scanf("%d", &op);
 
     switch(op){
         case 1:
@@ -136,13 +146,21 @@ int menu(){
         case 5:
             imprimirLista(lista);
             break;
+        case 6:
+            removerTodos(&lista);
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            break;
 
     }    
 }
 
 int main(){
  No *lista = NULL;
-    imprimirLista(lista);
+
+    menu();
+    /* imprimirLista(lista);
     adicionarInicio(&lista, 10);
     imprimirLista(lista);
     adicionarInicio(&lista, 20);
@@ -160,7 +178,8 @@ int main(){
     remover(&lista, 10);
     imprimirLista(lista);
     removerTodos(&lista);
-    imprimirLista(lista);
+    imprimirLista(lista);*/
+   
     
 
     return 0;
