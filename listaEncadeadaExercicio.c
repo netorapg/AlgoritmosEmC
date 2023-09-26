@@ -119,8 +119,7 @@ int menu(){
     int op = 0;
     int valor = 0;
     No *lista = NULL;
-
-    printf("1 - Adicionar no inicio\n");
+    /*printf("1 - Adicionar no inicio\n");
     printf("2 - Adicionar no meio\n");
     printf("3 - Adicionar no fim\n");
     printf("4 - Remover\n");
@@ -128,9 +127,54 @@ int menu(){
     printf("6 - Remover todos\n");
     printf("0 - Sair\n");
     printf("Digite a opcao: ");
-    scanf("%d", &op);
+    scanf("%d", &op);*/
 
-    switch(op){
+    while(op != 7){
+          printf("1 - Adicionar no inicio\n");
+        printf("2 - Adicionar no meio\n");
+        printf("3 - Adicionar no fim\n");
+        printf("4 - Remover\n");
+        printf("5 - Imprimir\n");
+        printf("6 - Remover todos\n");
+        printf("7 - Sair\n");
+        printf("Digite a opcao: ");
+        scanf("%d", &op);
+            
+        switch(op){
+            case 1:
+                printf("Digite o valor: ");
+                scanf("%d", &valor);    
+                adicionarInicio(&lista, valor);
+                break;
+            case 2:
+                printf("Digite o valor: ");
+                scanf("%d", &valor); 
+                adicionarMeio(&lista, valor, valor);
+                break;
+            case 3:
+                printf("Digite o valor: ");
+                scanf("%d", &valor); 
+                adicionarFim(&lista, valor);
+                break;
+            case 4:
+                printf("Digite o valor: ");
+                scanf("%d", &valor); 
+                remover(&lista, valor);
+                break;
+            case 5:
+                imprimirLista(lista);
+                break;
+            case 6:
+                removerTodos(&lista);
+                break;
+            default:
+                printf("Opcao invalida!\n");
+                break;
+
+        }
+      
+    }
+    /*switch(op){
         case 1:
             adicionarInicio(&lista, valor);
             break;
@@ -153,7 +197,8 @@ int menu(){
             printf("Opcao invalida!\n");
             break;
 
-    }    
+    }    */
+    
 }
 
 int main(){
