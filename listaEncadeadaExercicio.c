@@ -1,5 +1,4 @@
 /*
-Escreva uma função para contar quantos elementos existem na lista.
 Crie uma função que encontre o maior elemento da lista.
 Escreva uma função que encontre a média dos elementos na lista.
 Crie uma função que verifique se a lista contém um número específico.
@@ -144,11 +143,13 @@ int menu(){
         printf("8 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
+        printf("\n");
             
         switch(op){
             case 1:
                 printf("Digite o valor: ");
-                scanf("%d", &valor);    
+                scanf("%d", &valor);
+                printf("\n");    
                 adicionarInicio(&lista, valor);
                 break;
             case 2:
@@ -156,26 +157,33 @@ int menu(){
                 scanf("%d", &valorReferencia); 
                 printf("Digite o valor: ");
                 scanf("%d", &valor);
+                printf("\n"); 
                 adicionarMeio(&lista, valorReferencia, valor);
+                printf("\n"); 
                 break;
             case 3:
                 printf("Digite o valor: ");
                 scanf("%d", &valor); 
                 adicionarFim(&lista, valor);
+                printf("\n"); 
                 break;
             case 4:
                 printf("Digite o valor: ");
                 scanf("%d", &valor); 
                 remover(&lista, valor);
+                printf("\n"); 
                 break;
             case 5:
                 imprimirLista(lista);
+                printf("\n"); 
                 break;
             case 6:
                 removerTodos(&lista);
+                printf("\n"); 
                 break;
             case 7:
                 printf("A lista possui %d elementos\n", contarElementosNaLista(lista));
+                printf("\n"); 
                 break;
             case 8:
                 printf("Saindo...\n");
