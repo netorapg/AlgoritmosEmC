@@ -118,6 +118,17 @@ int contarElementosNaLista(No *lista){
     return cont;
 }
 
+int maiorelementoNaLista(No *lista){
+    int maior = 0;
+    while(lista){
+        if(lista->valor > maior){
+            maior = lista->valor;
+        }
+        lista = lista->proximo;
+    }
+    return maior;
+}
+
 void imprimirLista(No *aux){
     printf("Lista: ");
     while(aux){
@@ -140,7 +151,8 @@ int menu(){
         printf("5 - Imprimir\n");
         printf("6 - Remover todos\n");
         printf("7 - Contar elementos na lista\n");
-        printf("8 - Sair\n");
+        printf("8 - Maior elemento da lista\n");
+        printf("9 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -186,6 +198,10 @@ int menu(){
                 printf("\n"); 
                 break;
             case 8:
+                printf("O maior elemento da lista eh: %d\n", maiorelementoNaLista(lista));
+                printf("\n"); 
+                break;
+            case 9:
                 printf("Saindo...\n");
                 break;
             default:
@@ -196,7 +212,6 @@ int menu(){
 }
 
 int main(){
-// No *lista = NULL;
     menu();
     return 0;
 }
