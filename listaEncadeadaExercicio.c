@@ -1,6 +1,5 @@
-/*Implemente um menu para cada operação a ser realizada na lista (inserir no início, inserir no meio, inserir no fim e remover).
+/*
 Escreva uma função para contar quantos elementos existem na lista.
-Crie uma função que remova todos os elementos da lista.
 Crie uma função que encontre o maior elemento da lista.
 Escreva uma função que encontre a média dos elementos na lista.
 Crie uma função que verifique se a lista contém um número específico.
@@ -35,7 +34,13 @@ void adicionarInicio(No **lista, int valor){
     if(novo){
         novo->proximo = *lista;
         *lista = novo;
+    }   int contador = 0;
+    No *aux = *lista;
+    while(aux){
+        contador++;
+        aux = aux->proximo;
     }
+    return contador;
 }
 
 void adicionarMeio(No **lista, int valoreReferencia, int valor){
@@ -105,6 +110,15 @@ void removerTodos(No **lista){
 }
 }
 
+int contarElementosNaLista(No *lista){
+    int cont = 0;
+    while(lista){
+        cont++;
+        lista = lista->proximo;
+    }
+    return cont;
+}
+
 void imprimirLista(No *aux){
     printf("Lista: ");
     while(aux){
@@ -115,28 +129,19 @@ void imprimirLista(No *aux){
 }
 
 int menu(){
-
     int op = 0;
     int valor = 0;
+    int valorReferencia = 0;
     No *lista = NULL;
-    /*printf("1 - Adicionar no inicio\n");
-    printf("2 - Adicionar no meio\n");
-    printf("3 - Adicionar no fim\n");
-    printf("4 - Remover\n");
-    printf("5 - Imprimir\n");
-    printf("6 - Remover todos\n");
-    printf("0 - Sair\n");
-    printf("Digite a opcao: ");
-    scanf("%d", &op);*/
-
-    while(op != 7){
+    while(op != 8){
           printf("1 - Adicionar no inicio\n");
         printf("2 - Adicionar no meio\n");
         printf("3 - Adicionar no fim\n");
         printf("4 - Remover\n");
         printf("5 - Imprimir\n");
         printf("6 - Remover todos\n");
-        printf("7 - Sair\n");
+        printf("7 - Contar elementos na lista\n");
+        printf("8 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
             
@@ -147,9 +152,11 @@ int menu(){
                 adicionarInicio(&lista, valor);
                 break;
             case 2:
+                printf("Digite o valor de referencia: ");
+                scanf("%d", &valorReferencia); 
                 printf("Digite o valor: ");
-                scanf("%d", &valor); 
-                adicionarMeio(&lista, valor, valor);
+                scanf("%d", &valor);
+                adicionarMeio(&lista, valorReferencia, valor);
                 break;
             case 3:
                 printf("Digite o valor: ");
@@ -167,65 +174,21 @@ int menu(){
             case 6:
                 removerTodos(&lista);
                 break;
+            case 7:
+                printf("A lista possui %d elementos\n", contarElementosNaLista(lista));
+                break;
+            case 8:
+                printf("Saindo...\n");
+                break;
             default:
                 printf("Opcao invalida!\n");
                 break;
-
         }
-      
     }
-    /*switch(op){
-        case 1:
-            adicionarInicio(&lista, valor);
-            break;
-        case 2:
-            adicionarMeio(&lista, valor, valor);
-            break;
-        case 3:
-            adicionarFim(&lista, valor);
-            break;
-        case 4:
-            remover(&lista, valor);
-            break;
-        case 5:
-            imprimirLista(lista);
-            break;
-        case 6:
-            removerTodos(&lista);
-            break;
-        default:
-            printf("Opcao invalida!\n");
-            break;
-
-    }    */
-    
 }
 
 int main(){
- No *lista = NULL;
-
+// No *lista = NULL;
     menu();
-    /* imprimirLista(lista);
-    adicionarInicio(&lista, 10);
-    imprimirLista(lista);
-    adicionarInicio(&lista, 20);
-    imprimirLista(lista);
-    adicionarInicio(&lista, 50);
-    imprimirLista(lista);
-    adicionarFim(&lista, 5);
-    imprimirLista(lista);
-    adicionarFim(&lista, 1);
-    imprimirLista(lista);
-    adicionarInicio(&lista, 100);
-    imprimirLista(lista);
-    adicionarMeio(&lista, 20, 21);
-    imprimirLista(lista);
-    remover(&lista, 10);
-    imprimirLista(lista);
-    removerTodos(&lista);
-    imprimirLista(lista);*/
-   
-    
-
     return 0;
 }
