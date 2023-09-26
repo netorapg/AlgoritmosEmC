@@ -92,6 +92,19 @@ void remover(No **lista, int valor) {
     }
 }
 
+void removerTodos(No **lista){
+    if(*lista){
+        No *aux = *lista;
+        No *anterior = NULL;
+        while(aux->proximo){
+            anterior = aux;
+            aux = aux->proximo;
+            free(anterior);
+        }
+        *lista = NULL;
+}
+}
+
 void imprimirLista(No *aux){
     printf("Lista: ");
     while(aux){
@@ -101,10 +114,9 @@ void imprimirLista(No *aux){
     printf("\n");
 }
 
+int menu(){
 
-int main(){
-
-    int op = 5;
+    int op = 1;
     int valor = 0;
     No *lista = NULL;
 
@@ -126,4 +138,30 @@ int main(){
             break;
 
     }    
+}
+
+int main(){
+ No *lista = NULL;
+    imprimirLista(lista);
+    adicionarInicio(&lista, 10);
+    imprimirLista(lista);
+    adicionarInicio(&lista, 20);
+    imprimirLista(lista);
+    adicionarInicio(&lista, 50);
+    imprimirLista(lista);
+    adicionarFim(&lista, 5);
+    imprimirLista(lista);
+    adicionarFim(&lista, 1);
+    imprimirLista(lista);
+    adicionarInicio(&lista, 100);
+    imprimirLista(lista);
+    adicionarMeio(&lista, 20, 21);
+    imprimirLista(lista);
+    remover(&lista, 10);
+    imprimirLista(lista);
+    removerTodos(&lista);
+    imprimirLista(lista);
+    
+
+    return 0;
 }
