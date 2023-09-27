@@ -1,5 +1,4 @@
 /*
-Crie uma função que encontre o maior elemento da lista.
 Escreva uma função que encontre a média dos elementos na lista.
 Crie uma função que verifique se a lista contém um número específico.
 Implemente uma função que ordene os elementos na lista em ordem crescente ou decrescente.
@@ -28,7 +27,19 @@ No* criarNo(int valor){
 }
 
 
-void adicionarInicio(No **lista, int valor){
+float encontrarMedia(No **lista){
+    int media = 0;
+    int contador = 0;
+    No *aux = *lista;
+    while(aux){
+        contador++;
+        media += aux->valor;
+        aux = aux->proximo;
+    }
+    return media/contador;
+}
+
+int adicionarInicio(No **lista, int valor){
     No *novo = criarNo(valor);
     if(novo){
         novo->proximo = *lista;
@@ -143,7 +154,7 @@ int menu(){
     int valor = 0;
     int valorReferencia = 0;
     No *lista = NULL;
-    while(op != 8){
+    while(op != 10){
           printf("1 - Adicionar no inicio\n");
         printf("2 - Adicionar no meio\n");
         printf("3 - Adicionar no fim\n");
@@ -152,7 +163,8 @@ int menu(){
         printf("6 - Remover todos\n");
         printf("7 - Contar elementos na lista\n");
         printf("8 - Maior elemento da lista\n");
-        printf("9 - Sair\n");
+        printf("9 - Media dos elementos da lista\n");
+        printf("10 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -198,10 +210,14 @@ int menu(){
                 printf("\n"); 
                 break;
             case 8:
-                printf("O maior elemento da lista eh: %d\n", maiorelementoNaLista(lista));
+                printf("O maior elemento da lista é: %d\n", maiorelementoNaLista(lista));
                 printf("\n"); 
                 break;
             case 9:
+                printf("A media dos elementos da lista é: %.2f\n", encontrarMedia(&lista));
+                printf("\n"); 
+                break;
+            case 10:
                 printf("Saindo...\n");
                 break;
             default:
