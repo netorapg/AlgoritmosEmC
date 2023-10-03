@@ -27,9 +27,9 @@ No* criarNo(int valor){
 }
 
 
-float encontrarMedia(No **lista){
-    int media = 0;
-    int contador = 0;
+int encontrarMedia(No **lista){
+    float media = 0;
+    float contador = 0;
     No *aux = *lista;
     while(aux){
         contador++;
