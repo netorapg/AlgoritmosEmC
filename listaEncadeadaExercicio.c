@@ -168,6 +168,8 @@ void identificarNumero(No **lista){
     scanf("%d", &numero);
     printf("\n");
     No *aux = *lista;
+   
+
     while(aux != NULL){
         if(aux->valor == numero){
             printf("O numero %d esta na lista!\n", numero);
@@ -176,6 +178,7 @@ void identificarNumero(No **lista){
         aux = aux->proximo;
     }
     printf("O numero %d nao esta na lista!\n", numero);
+    
 }
 
 
