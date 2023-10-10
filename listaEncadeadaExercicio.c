@@ -253,7 +253,6 @@ int menu(){
         printf("11 - Preencher lista com numeros aleatorios\n");
         printf("12 - Ordenar Lista de forma crescente\n");
         printf("13 - Ordenar Lista de forma decrescente\n");
-        printf("14 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
