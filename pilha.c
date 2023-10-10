@@ -48,6 +48,7 @@ void imprimir(Pilha *p){
     printf("\n");
     while(aux){
         printf("%d\n", aux->valor);
+        printf("\n");
         aux = aux->proximo;
     }
     printf("\n");
@@ -69,6 +70,10 @@ int main() {
     push(&pilha, 1);
     imprimir(&pilha);
     push(&pilha, 9);
+    imprimir(&pilha);
+    pop(&pilha);
+    imprimir(&pilha);
+    pop(&pilha);
     imprimir(&pilha);
     pop(&pilha);
     imprimir(&pilha);
