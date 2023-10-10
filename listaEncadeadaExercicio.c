@@ -1,7 +1,7 @@
 /*
-Escreva uma função que encontre a média dos elementos na lista. [Work in progress]
-Crie uma função que verifique se a lista contém um número específico.
-Implemente uma função que ordene os elementos na lista em ordem crescente ou decrescente.
+Escreva uma função que encontre a média dos elementos na lista. [ok]
+Crie uma função que verifique se a lista contém um número específico.[ok]
+Implemente uma função que ordene os elementos na lista em ordem crescente ou decrescente.[ok]
 Crie uma função que remova todos os elementos repetidos da lista.
 Crie uma função que faça a concatenação de duas listas e retorne a lista resultante.
 */
@@ -25,18 +25,6 @@ No* criarNo(int valor){
         printf("Erro ao alocar memoria!\n");
     }
     return NULL;
-}
-
-int encontrarMedia(No **lista){
-    int media = 0;
-    int contador = 0;
-    No *aux = *lista;
-    while(aux){
-        contador++;
-        media += aux->valor;
-        aux = aux->proximo;
-    }
-    return media/contador;
 }
 
 
@@ -161,19 +149,83 @@ void preencherListaComNumerosAleatorios(No **lista, int tamanho, int valorMinimo
     }
 }
 
+void inserirOrdenadoCrescente(No **lista, No *novo) {
+    No *atual;
+    if (*lista == NULL || (*lista)->valor >= novo->valor) {
+        novo->proximo = *lista;
+        *lista = novo;
+    } else {
+        atual = *lista;
+        while (atual->proximo != NULL && atual->proximo->valor < novo->valor) {
+            atual = atual->proximo;
+        }
+        novo->proximo = atual->proximo;
+        atual->proximo = novo;
+    }
+}
 
-void identificarNumero(No **lista){
+void ordenarListaCrescente(No **lista) {
+    No *sorted = NULL;
+    No *current = *lista;
+
+    while (current != NULL) {
+        No *next = current->proximo;
+        inserirOrdenadoCrescente(&sorted, current);
+        current = next;
+    }
+    *lista = sorted;
+
+}
+
+void inserirOrdenadoDescrescente(No **lista, No *novo) {
+    No *atual;
+    if (*lista == NULL || (*lista)->valor <= novo->valor) {
+        novo->proximo = *lista;
+        *lista = novo;
+    } else {
+        atual = *lista;
+        while (atual->proximo != NULL && atual->proximo->valor > novo->valor) {
+            atual = atual->proximo;
+        }
+        novo->proximo = atual->proximo;
+        atual->proximo = novo;
+    }
+}
+
+void ordenarListaDecrescente(No **lista) {
+    No *sorted = NULL;
+    No *current = *lista;
+
+    while (current != NULL) {
+        No *next = current->proximo;
+        inserirOrdenadoDescrescente(&sorted, current);
+        current = next;
+    }
+    *lista = sorted;
+}
+
+float encontrarMedia(No **lista){
+    float media = 0;
+    int contador = 0;
+    No *aux = *lista;
+    while(aux){
+        contador++;
+        media += aux->valor;
+        aux = aux->proximo;
+    }
+    return (media/contador);
+}
+
+void identificarNumero(No *lista){
     int numero = 0;
     printf("Digite o numero que deseja verificar: ");
     scanf("%d", &numero);
     printf("\n");
-    No *aux = *lista;
-   
-
+    No *aux = lista;
     while(aux != NULL){
         if(aux->valor == numero){
             printf("O numero %d esta na lista!\n", numero);
-            return;
+            //return;
         }
         aux = aux->proximo;
     }
@@ -181,13 +233,13 @@ void identificarNumero(No **lista){
     
 }
 
-
 int menu(){
     int op = 0;
     int valor = 0;
     int valorReferencia = 0;
     No *lista = NULL;
-    while(op != 10){
+    while(op != -1){
+        printf ("-1 - Sair\n");
         printf("1 - Adicionar no inicio\n");
         printf("2 - Adicionar no meio\n");
         printf("3 - Adicionar no fim\n");
@@ -199,11 +251,12 @@ int menu(){
         printf("9 - Media dos elementos da lista\n");
         printf("10 - Verificar se um numero esta na lista\n");
         printf("11 - Preencher lista com numeros aleatorios\n");
-        printf("12 - Sair\n");
+        printf("12 - Ordenar Lista de forma crescente\n");
+        printf("13 - Ordenar Lista de forma decrescente\n");
+        printf("14 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
-            
         switch(op){
             case 1:
                 printf("Digite o valor: ");
@@ -249,16 +302,22 @@ int menu(){
                 printf("\n"); 
                 break;
             case 9:
-                printf("A media dos elementos da lista é: %d\n", encontrarMedia(&lista));
+                printf("A media dos elementos da lista é: %f\n", encontrarMedia(&lista));
                 printf("\n"); 
                 break;
             case 10:
-                identificarNumero(&lista);
+                identificarNumero(lista);
                 break;
             case 11:
                 preencherListaComNumerosAleatorios(&lista, 10, 1, 100);
                 break;
             case 12:
+                ordenarListaCrescente(&lista);
+                break;
+            case 13:
+                ordenarListaDecrescente(&lista);
+                break;
+            case -1:
                 printf("Saindo...\n");
                 break;
             default:
@@ -266,9 +325,7 @@ int menu(){
                 break;
         }
     }
-    return 0;
 }
-
 int main(){
     menu();
     return 0;
