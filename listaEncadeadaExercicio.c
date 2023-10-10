@@ -1,5 +1,5 @@
 /*
-Escreva uma função que encontre a média dos elementos na lista.
+Escreva uma função que encontre a média dos elementos na lista. [Work in progress]
 Crie uma função que verifique se a lista contém um número específico.
 Implemente uma função que ordene os elementos na lista em ordem crescente ou decrescente.
 Crie uma função que remova todos os elementos repetidos da lista.
@@ -28,8 +28,8 @@ No* criarNo(int valor){
 
 
 int encontrarMedia(No **lista){
-    float media = 0;
-    float contador = 0;
+    int media = 0;
+    int contador = 0;
     No *aux = *lista;
     while(aux){
         contador++;
@@ -214,7 +214,7 @@ int menu(){
                 printf("\n"); 
                 break;
             case 9:
-                printf("A media dos elementos da lista é: %.2f\n", encontrarMedia(&lista));
+                printf("A media dos elementos da lista é: %d\n", encontrarMedia(&lista));
                 printf("\n"); 
                 break;
             case 10:

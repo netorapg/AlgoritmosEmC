@@ -21,7 +21,7 @@ void push(Pilha *p, int valor){
     No *novo = (No*)malloc(sizeof(No));
     if(novo){
         novo->valor = valor;
-        
+        novo->proximo = p->topo;
     }
 }
 
