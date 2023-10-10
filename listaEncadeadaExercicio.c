@@ -8,6 +8,7 @@ Crie uma função que faça a concatenação de duas listas e retorne a lista re
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct no {
     int valor;
@@ -26,7 +27,6 @@ No* criarNo(int valor){
     return NULL;
 }
 
-
 int encontrarMedia(No **lista){
     int media = 0;
     int contador = 0;
@@ -38,6 +38,9 @@ int encontrarMedia(No **lista){
     }
     return media/contador;
 }
+
+
+
 
 int adicionarInicio(No **lista, int valor){
     No *novo = criarNo(valor);
@@ -53,7 +56,7 @@ int adicionarInicio(No **lista, int valor){
     return contador;
 }
 
-void adicionarMeio(No **lista, int valoreReferencia, int valor){
+int adicionarMeio(No **lista, int valoreReferencia, int valor){
     No *novo = criarNo(valor);
     if(novo){
         if(*lista==NULL){
@@ -149,13 +152,40 @@ void imprimirLista(No *aux){
     printf("\n");
 }
 
+void preencherListaComNumerosAleatorios(No **lista, int tamanho, int valorMinimo, int valorMaximo) {
+    srand(time(NULL)); // Inicializa a semente do gerador de números aleatórios com o tempo atual.
+    
+    for (int i = 0; i < tamanho; i++) {
+        int valorAleatorio = rand() % (valorMaximo - valorMinimo + 1) + valorMinimo;
+        adicionarFim(lista, valorAleatorio); // Adiciona o valor aleatório ao final da lista.
+    }
+}
+
+
+void identificarNumero(No **lista){
+    int numero = 0;
+    printf("Digite o numero que deseja verificar: ");
+    scanf("%d", &numero);
+    printf("\n");
+    No *aux = *lista;
+    while(aux != NULL){
+        if(aux->valor == numero){
+            printf("O numero %d esta na lista!\n", numero);
+            return;
+        }
+        aux = aux->proximo;
+    }
+    printf("O numero %d nao esta na lista!\n", numero);
+}
+
+
 int menu(){
     int op = 0;
     int valor = 0;
     int valorReferencia = 0;
     No *lista = NULL;
     while(op != 10){
-          printf("1 - Adicionar no inicio\n");
+        printf("1 - Adicionar no inicio\n");
         printf("2 - Adicionar no meio\n");
         printf("3 - Adicionar no fim\n");
         printf("4 - Remover\n");
@@ -164,7 +194,9 @@ int menu(){
         printf("7 - Contar elementos na lista\n");
         printf("8 - Maior elemento da lista\n");
         printf("9 - Media dos elementos da lista\n");
-        printf("10 - Sair\n");
+        printf("10 - Verificar se um numero esta na lista\n");
+        printf("11 - Preencher lista com numeros aleatorios\n");
+        printf("12 - Sair\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -218,6 +250,12 @@ int menu(){
                 printf("\n"); 
                 break;
             case 10:
+                identificarNumero(&lista);
+                break;
+            case 11:
+                preencherListaComNumerosAleatorios(&lista, 10, 1, 100);
+                break;
+            case 12:
                 printf("Saindo...\n");
                 break;
             default:
@@ -225,6 +263,7 @@ int menu(){
                 break;
         }
     }
+    return 0;
 }
 
 int main(){
