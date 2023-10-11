@@ -1,5 +1,5 @@
 /*Crie uma pilha que suporta as operações push, pop e imprimir. Inclua um menu para o usuário selecionar a operação desejada.[ok]
-Altere o exercício anterior e implemente as funções getMin e getMax (retorna o menor e maior elemento) em tempo constante.[]
+Altere o exercício anterior e implemente as funções getMin e getMax (retorna o menor e maior elemento) em tempo constante.[ok]
 Escreva um programa que avalie a validade de uma expressão aritmética com operadores +, -, *, /, ( e ) usando uma pilha. []
 Você precisa verificar se a sequência dos parênteses estão corretas.[]
 Implemente uma pilha para rastrear o histórico de navegação em um navegador da web.[] 
