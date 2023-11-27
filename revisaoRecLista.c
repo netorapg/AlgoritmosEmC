@@ -127,6 +127,17 @@ int contarElementosNaLista(No *lista){
     return cont;
 }
 
+int contarVezesQueAparece(No *lista, int valor){
+    int cont = 0;
+    while(lista){
+        if(lista->valor == valor){
+            cont++;
+        }
+        lista = lista->proximo;
+    }
+    return cont;
+}
+
 int maiorElementoNaLista(No *lista){
     int maior = 0;
     while(lista){
@@ -176,6 +187,7 @@ No *lista = NULL;
         printf ("7 - Remover todos\n");
         printf ("8 - Contar elementos na lista\n");
         printf ("9 - Maior elemento da lista\n");
+        printf("10- Contar quantas vezes um elemento aparece na lista\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -227,6 +239,11 @@ No *lista = NULL;
                 break;
             case 9:
                 printf("O maior valor da lista é %d\n", maiorElementoNaLista(lista));
+                break;
+            case 10:
+                printf("Digite o valor: ");
+                scanf("%d", &valor);
+                printf("O numero %d aparece %d vezes\n", valor, contarVezesQueAparece(lista, valor));
                 break;
             default:
                 printf("Opcao invalida!\n");
