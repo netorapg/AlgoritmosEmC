@@ -1,6 +1,6 @@
 /*Crie uma pilha que suporta as operações push, pop e imprimir. Inclua um menu para o usuário selecionar a operação desejada.[ok]
 Altere o exercício anterior e implemente as funções getMin e getMax (retorna o menor e maior elemento) em tempo constante.[ok]
-Escreva um programa que avalie a validade de uma expressão aritmética com operadores +, -, *, /, ( e ) usando uma pilha. []
+Escreva um programa que avalie a validade de uma expressão aritmética com operadores +, -, *, /, ( e ) usando uma pilha.
 Você precisa verificar se a sequência dos parênteses estão corretas.[]
 Implemente uma pilha para rastrear o histórico de navegação em um navegador da web.[] 
 O usuário deve ter as seguintes informações opções: visitar um site, voltar, ou sair.[]
@@ -72,6 +72,21 @@ void imprimir(Pilha *p){
     printf("\n");
 }
 
+int verificarExpressao(Pilha *p, char *expressao){
+    int len = strlen(expressao);
+    for(int i = 0; i < len; i++){
+        if(expressao[i] == '('){
+            push(p, 1);
+        }else if(expressao[i] == ')'){
+            if(!verificarPilhaVazia(p)){
+                return 0;
+            }
+            pop(p);
+        }
+    }
+    return verificarPilhaVazia(p) ? 0 : 1;
+}
+
 int menu(){
     int op = 0;
     int valor = 0;
@@ -85,6 +100,7 @@ int menu(){
     printf("3 - imprimir\n");
     printf("4 - Maior valor\n");
     printf("5 - Menor valor\n");
+    printf("6 - Verificar expressao\n");
     printf("opcao: ");
     scanf("%d", &op);
     switch(op){
@@ -108,6 +124,8 @@ int menu(){
         case 5:
             printf("Menor valor: %d\n", pilha.min);
             break;
+        case 6:
+            printf("Digite a expressao")
         default:
             printf("opcao invalida\n");
             break;
