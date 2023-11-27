@@ -105,6 +105,39 @@ void removerMeio (No **lista, int valor){
     }
 }
 
+void removerTodos(No **lista){
+    if(*lista){
+        No *aux = *lista;
+        No *anterior = NULL;
+        while(aux->proximo){
+            anterior = aux;
+            aux = aux->proximo;
+            free(anterior);
+        }
+        *lista = NULL;
+    }
+}
+
+int contarElementosNaLista(No *lista){
+    int cont = 0;
+    while(lista){
+        cont++;
+        lista = lista->proximo;
+    }
+    return cont;
+}
+
+int maiorElementoNaLista(No *lista){
+    int maior = 0;
+    while(lista){
+        if(lista->valor > maior){
+            maior = lista->valor;
+        }
+        lista = lista->proximo;
+    }
+    return maior;
+}
+
 
 void imprimirLista(No *aux){
     printf("\n Imprimindo: [ ");
@@ -131,7 +164,6 @@ No *lista = NULL;
     int valor = 0;
     int valorReferencia = 0;
     preencherListaComNumerosAleatorios(&lista, 10, 1, 100);
-    
     while(op != 0){
         imprimirLista(lista);
         printf ("0 - Sair\n");
@@ -141,6 +173,9 @@ No *lista = NULL;
         printf ("4 - Remover do inicio\n");
         printf ("5 - Remover do meio\n");
         printf ("6- Remover do fim\n");
+        printf ("7 - Remover todos\n");
+        printf ("8 - Contar elementos na lista\n");
+        printf ("9 - Maior elemento da lista\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -183,10 +218,19 @@ No *lista = NULL;
                 printf("Valor do fim removido!\n");
                 removerFim(&lista);
                 break;
+            case 7:
+                printf("Lista removida com sucesso!\n");
+                removerTodos(&lista);
+                break;
+            case 8:
+                printf("A lista possui %d elementos\n", contarElementosNaLista(lista));
+                break;
+            case 9:
+                printf("O maior valor da lista é %d\n", maiorElementoNaLista(lista));
+                break;
             default:
                 printf("Opcao invalida!\n");
                 break;
-
         }
     }
 }
