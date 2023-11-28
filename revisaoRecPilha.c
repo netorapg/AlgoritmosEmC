@@ -8,14 +8,21 @@ typedef struct no{
 
 typedef struct pilha{
     struct no *topo;
+    int min;
+    int max;
 }Pilha;
 
 void inicializarPilha(Pilha *p){
-    p ->topo = NULL;
+    p->topo = NULL;
+    p->min = __INT_MAX__;
+    p->max = -__INT_MAX__;
+    printf("%d",p->max);
 }
 
 int verificarPilhaVazia(Pilha *p){
     return (p->topo!=NULL);
+
+
 }
 
 void push(Pilha *p, int valor){
@@ -24,6 +31,13 @@ void push(Pilha *p, int valor){
         novo->valor = valor;
         novo ->proximo = p->topo;
         p->topo = novo;
+
+        if(p->min > valor){
+            p->min = valor;
+        }
+        if(p->max < valor){
+            p->max = valor;
+        }
     }
 }
 
@@ -37,9 +51,10 @@ int pop(Pilha *p){
         return retorno;
     }else{
         printf("lista vazia");
-    }
-    return 0;
+        return 0;
+    }   
 }
+
 
 void imprimir(Pilha *p){
     No *aux = p->topo;
@@ -55,10 +70,12 @@ void imprimir(Pilha *p){
 
 int menu(){
     Pilha pilha;
+    inicializarPilha(&pilha);
     int op = -1;
     int valor = 0;
     int valorReferencia = 0;
     while(op != 0){
+        printf("Maior valor: %d | Menor valor: %d\n", pilha.max, pilha.min);
         imprimir(&pilha);
         printf("0 - Sair\n");
         printf("1 - Adicionar elemento\n");

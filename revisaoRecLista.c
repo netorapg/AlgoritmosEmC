@@ -169,13 +169,30 @@ void preencherListaComNumerosAleatorios(No **lista, int tamanho, int valorMinimo
     }
 }
 
+void associarListas(No **lista, No *lista2){
+    if(*lista){
+        No *aux = *lista;
+        while(aux->proximo){
+            aux = aux->proximo;
+        }
+        if(aux->proximo == NULL){
+            aux->proximo = lista2;
+        }
+    }
+}
+
+
+
 int menu(){
 No *lista = NULL;
+No *lista2 = NULL;
     int op = -1;
     int valor = 0;
     int valorReferencia = 0;
     preencherListaComNumerosAleatorios(&lista, 10, 1, 100);
+    preencherListaComNumerosAleatorios(&lista2, 10, 1, 100);
     while(op != 0){
+        imprimirLista(lista);
         imprimirLista(lista);
         printf ("0 - Sair\n");
         printf ("1 - Adicionar no inicio\n");
@@ -188,6 +205,7 @@ No *lista = NULL;
         printf ("8 - Contar elementos na lista\n");
         printf ("9 - Maior elemento da lista\n");
         printf("10- Contar quantas vezes um elemento aparece na lista\n");
+        printf("11 = Associar Listas\n");
         printf("Digite a opcao: ");
         scanf("%d", &op);
         printf("\n");
@@ -244,6 +262,10 @@ No *lista = NULL;
                 printf("Digite o valor: ");
                 scanf("%d", &valor);
                 printf("O numero %d aparece %d vezes\n", valor, contarVezesQueAparece(lista, valor));
+                break;
+            case 11:
+                printf("Associando as listas\n");
+                associarListas(&lista, lista2);
                 break;
             default:
                 printf("Opcao invalida!\n");

@@ -87,11 +87,9 @@ int verificarExpressao(Pilha *p, char *expressao){
     return verificarPilhaVazia(p) ? 0 : 1;
 }
 
-int menu(){
+int menu(Pilha *pilha){
     int op = 0;
     int valor = 0;
-    Pilha pilha;
-    inicializarPilha(&pilha);
     while(op != -1){
     printf("MENU\n");
     printf("-1 - Sair\n");
@@ -119,13 +117,13 @@ int menu(){
             imprimir(&pilha);
             break;
         case 4:
-            printf("Maior valor: %d\n", pilha.max);
+            printf("Maior valor: %d\n", pilha->max);
             break;
         case 5:
-            printf("Menor valor: %d\n", pilha.min);
+            printf("Menor valor: %d\n", pilha->min);
             break;
         case 6:
-            printf("Digite a expressao")
+            printf("Digite a expressao");
         default:
             printf("opcao invalida\n");
             break;
@@ -134,6 +132,8 @@ int menu(){
 }
 
 int main(){
-    menu();
+    Pilha pilha;
+    inicializarPilha(&pilha);
+    menu(&pilha);
     return 0;
 }
