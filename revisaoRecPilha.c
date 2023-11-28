@@ -16,7 +16,6 @@ void inicializarPilha(Pilha *p){
     p->topo = NULL;
     p->min = __INT_MAX__;
     p->max = -__INT_MAX__;
-    printf("%d",p->max);
 }
 
 int verificarPilhaVazia(Pilha *p){

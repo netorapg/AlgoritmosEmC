@@ -190,7 +190,7 @@ No *lista2 = NULL;
     int valor = 0;
     int valorReferencia = 0;
     preencherListaComNumerosAleatorios(&lista, 10, 1, 100);
-    preencherListaComNumerosAleatorios(&lista2, 10, 1, 100);
+    preencherListaComNumerosAleatorios(&lista2, 5, 1, 100);
     while(op != 0){
         imprimirLista(lista);
         imprimirLista(lista);
